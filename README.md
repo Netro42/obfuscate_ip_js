@@ -7,7 +7,14 @@ Get user IP using ipify.org with JSONp and then obfuscate results for use with a
 window.obfuscated_ip = getUserIpFromIpify();
 ```
 
-Will return '192.30.252.xxx' for example.
+Will return '192.30.252.xxx' for example. Alternatively...
+
+
+``` javascript
+window.obfuscated_ip = getUserIpFromIpify("255.255.255.255");
+```
+
+Will return '255.255.255.xxx' and not fetch an IP from ipify.
 
 ## Installation
 
