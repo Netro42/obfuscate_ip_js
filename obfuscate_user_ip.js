@@ -17,7 +17,7 @@ function obfuscateTheIp(ip_pieces, ip_version) {
         toreturn += ip_pieces[i] + separator;
     }
     toreturn += 'xxx' + (ip_version == 'v6' ? 'x' : '');
-    console.log(toreturn);
+    // console.log(toreturn);
     return toreturn;
 }
 
