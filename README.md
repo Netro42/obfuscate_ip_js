@@ -11,7 +11,7 @@ Will return '192.30.252.xxx' for example.
 
 ## Installation
 
-``` javascript
+``` html
 <script src="/path/to/your/js/obfuscate_user_ip.min.js"></script>
 <script>var obfuscated_user_ip = getObfuscatedUserIpAddress();</script>
 ```
