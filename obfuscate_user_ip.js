@@ -1,17 +1,18 @@
 'use strict';
 
-function getObfuscatedUserIpAddress() {
-    var script = document.createElement('script');
-    script.src = 'https://api.ipify.org?format=jsonp&callback=returnIpAddressOfUser';
-    document.getElementsByTagName('head')[0].appendChild(script);
+function getObfuscatedUserIpAddress(ip_address) {
+    if (!ip_address || typeof 'ip_address' === undefined) {
+        var script = document.createElement('script');
+        script.src = 'https://api.ipify.org?format=jsonp&callback=returnIpAddressInChunks';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    } else {
+        returnIpAddressInChunks({"ip" : ip_address});
+    }
 }
 
 function obfuscateTheIp(ip_pieces, ip_version) {
     var toreturn = '';
-    var separator = '.';
-    if (ip_version == 'v6') {
-        separator = ':';
-    }
+    var separator = ip_version === 'v6' ? ':' : '.';
     for (i = 0; i < ip_pieces.length - 1; i++) {
         toreturn += ip_pieces[i] + separator;
     }
@@ -20,7 +21,7 @@ function obfuscateTheIp(ip_pieces, ip_version) {
     return toreturn;
 }
 
-function returnIpAddressOfUser(data) {
+function returnIpAddressInChunks(data) {
     var userip = data.ip;
     if (!userip.length) {
         return null;
